@@ -9,7 +9,6 @@ namespace CorrecaoDiarioDeClasse
         {
             List<Aluno> lista_alunos = new List<Aluno>();
 
-
             bool voltar_menu_inicial = false;
 
             do
@@ -33,18 +32,16 @@ namespace CorrecaoDiarioDeClasse
                 Console.BackgroundColor = ConsoleColor.DarkYellow;
                 Console.WriteLine("FALTAS:");
                 Console.BackgroundColor = ConsoleColor.Black;
-                Console.WriteLine("5 - Listar Todos");
-                Console.WriteLine("6 - Cadastrar Aluno");
-                Console.WriteLine("7 - Atualizar Cadastro de Aluno");
-                Console.WriteLine("8 - Remover Aluno");
+                Console.WriteLine("5 - Registrar Falta");
+                Console.WriteLine("6 - Listar Faltas");
+                Console.WriteLine("7 - Remover Falta");
 
                 Console.BackgroundColor = ConsoleColor.DarkYellow;
                 Console.WriteLine("NOTAS:");
                 Console.BackgroundColor = ConsoleColor.Black;
-                Console.WriteLine("9 - Listar Todos");
-                Console.WriteLine("10 - Cadastrar Aluno");
-                Console.WriteLine("11 - Atualizar Cadastro de Aluno");
-                Console.WriteLine("12 - Remover Aluno");
+                Console.WriteLine("8 - Registrar Nota");
+                Console.WriteLine("9 - Listar Notas");
+                Console.WriteLine("10 - Corrigir Nota");
 
                 int opcao_menu;
 
@@ -53,7 +50,7 @@ namespace CorrecaoDiarioDeClasse
                 {
                     opcao_valida_menu = int.TryParse(Console.ReadLine(), out opcao_menu);
 
-                    if(opcao_menu < 1 || opcao_menu > 12 || opcao_valida_menu == false)
+                    if(opcao_menu < 1 || opcao_menu > 10 || opcao_valida_menu == false)
                     {
                         Console.BackgroundColor = ConsoleColor.DarkRed;
                         Console.WriteLine("Opção inválida, redigite uma opção:");
@@ -66,7 +63,7 @@ namespace CorrecaoDiarioDeClasse
 
                 switch(opcao_menu)
                 {
-                    case 1: // Listar Alunos
+                    case 1: // Listar Alunos                        
                         Aluno.Listar_Alunos(lista_alunos);
                         break;
 
@@ -85,39 +82,30 @@ namespace CorrecaoDiarioDeClasse
                         lista_alunos = Aluno.Excluir(lista_alunos);
                         break;
 
-                    case 5:
+                    case 5: // Registrar Falta
+                        lista_alunos = Aluno.Registrar_Falta(lista_alunos);
                         break;
 
-                    case 6:
+                    case 6: // Listar Falta
+                        Aluno.Listar_Faltas(lista_alunos);
                         break;
 
-                    case 7:
+                    case 7: // Remover Falta
+                        lista_alunos = Aluno.Corrigir_Falta(lista_alunos);
                         break;
 
-                    case 8:
+                    case 8: // Registrar nota
+                        lista_alunos = Aluno.Registrar_Nota(lista_alunos);
                         break;
 
-                    case 9:
+                    case 9: // Listar Nota
+                        Aluno.Listar_Notas(lista_alunos);
                         break;
 
-                    case 10:
-                        break;
-
-                    case 11:
-                        break;
-
-                    case 12:
+                    case 10: // Corrigir Nota
+                        Aluno.Corrigir_Nota(lista_alunos);
                         break;
                 }
-
-                
-
-
-
-
-
-
-
 
                 // Controlando se é para voltar ao menu inicial.
                 Console.WriteLine("Deseja voltar ao menu inicial? S/n");
